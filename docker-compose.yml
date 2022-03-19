@@ -1,0 +1,22 @@
+version: '2'
+services:
+  db:
+    image: mongo:4.4
+    command: --oplogSize 128 --wiredTigerCacheSizeGB 0.5
+    restart: unless-stopped
+    volumes:
+      - ../volumes/db:/data/db
+
+  app:
+    image: toras9000/growi-mp:4.5
+    build:
+      context: ./build
+      args:
+        - GROWI_BRANCH=v4.5.15
+    restart: unless-stopped
+    links:
+      - db:db-container
+    ports:
+      - "8030:3000"
+    environment:
+      - MONGO_URI=mongodb://db-container:27017/growi
