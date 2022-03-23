@@ -5,7 +5,7 @@ services:
     command: --oplogSize 128 --wiredTigerCacheSizeGB 0.5
     restart: unless-stopped
     volumes:
-      - ../volumes/db:/data/db
+      - ../volumes/growi/db:/data/db
 
   app:
     image: toras9000/growi-mp:4.5
