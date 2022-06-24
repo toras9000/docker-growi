@@ -3,7 +3,7 @@ FROM node:16-bullseye-slim as builder
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Target branch
-ARG GROWI_BRANCH=v4.5.15
+ARG GROWI_BRANCH=v4.5.23
 
 # Setting
 ARG GROWI_NO_CDN=false
